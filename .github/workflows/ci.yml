@@ -35,12 +35,13 @@
         - name: Build Application
           run: mvn clean verify
 
-          # SonarQube Scan
+        # SonarQube Scan
         - name: SonarQube Scan
-          run: mvn sonar:sonar \
-            -Dsonar.projectKey=helloworld \
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          run: |
+            mvn sonar:sonar \
+              -Dsonar.projectKey=helloworld \
+              -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+              -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
 
         # Build Docker Image
